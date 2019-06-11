@@ -1,0 +1,1 @@
+C:\Users\bb02\text-classifier-tf\venv\Scripts\python.exe C:/Users/bb02/text-classifier-tf/listener.py --dir C:\Users\bb02\Desktop\Listener\Downloads --cs_f C:\Users\bb02\Desktop\Listener\CS --otr_f C:\Users\bb02\Desktop\Listener\OT --all_f C:\Users\bb02\Desktop\Listener\Default --checkpoint_dir C:\Users\bb02\Desktop\Listener\Checkpoints
