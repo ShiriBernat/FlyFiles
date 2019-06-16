@@ -21,7 +21,7 @@ batch_size = 32
 num_epochs = 200
 evaluate_every = 100
 checkpoint_every = 100
-num_checkpoints = 5
+num_checkpoints = 50000
 
 allow_soft_placement = True
 log_device_placement = False
@@ -176,6 +176,9 @@ with tf.Graph().as_default():
             train_step(x_batch, y_batch)
             current_step = tf.train.global_step(sess, global_step)
 
+            if current_step >= 100000:
+                exit(200)
+
             if current_step % evaluate_every == 0:
                 print("\nEvaluation:")
                 dev_step(x_dev[:100], y_dev[:100], writer=dev_summary_writer)
@@ -185,6 +188,6 @@ with tf.Graph().as_default():
                 path = saver.save(sess, checkpoint_prefix, global_step=current_step)
 
                 # Save the model for Embedding Visualization
-                saver.save(sess, os.path.join(dev_summary_dir, "model.ckpt"), global_step=current_step)
+                saver.save(sess, os.path.join(dev_summary_dir, str(current_step) + "_" + "model.ckpt"), global_step=current_step)
 
                 print("Saved model checkpoint to {}\n".format(path))

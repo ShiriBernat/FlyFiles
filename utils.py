@@ -65,13 +65,8 @@ def load_data_from_disk(positive_data_file, negative_data_file):
     # Make sure that data contains same size of negative and positive data (assume: negative < positive)
     positive_sentences = positive_sentences[:len(negative_sentences)]
 
-    # Print Validation
-    print(f"positive_sentences_len: {len(positive_sentences)}")
-    print(f"negative_sentences_len: {len(negative_sentences)}")
-
     # Split by words
     X = positive_sentences + negative_sentences
-    print('clean strings')
     X = [clean_str(sent) for sent in X]
 
     positive_labels = [[1, 0] for _ in positive_sentences]
@@ -88,12 +83,11 @@ def pad_sentences(sentences, padding_word="<PAD/>", maxlen=0):
      Returns padded sentences.
     """
 
-    print('pad sentences...')
     if maxlen > 0:
         sequence_length = maxlen
     else:
         sequence_length = max(len(s) for s in sentences)
-    print('max sequence length: {}'.format(sequence_length))
+
     padded_sentences = []
     for i in range(len(sentences)):
         sentence = sentences[i]
@@ -202,9 +196,7 @@ def convert(fname, pages=None):
     converter.close()
     text = output.getvalue()
     output.close
-
     return text
-
 
 # converts all pdfs in directory pdfDir, saves all resulting txt files to txtdir
 def convertMultiple(pdfDir, txtDir):

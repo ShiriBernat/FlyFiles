@@ -4,16 +4,15 @@ import utils
 import os
 import shutil
 import time
+import utils
+import re
 import random
 from collections import Counter
 
 def rename_files(args):
     files_list = os.listdir(args.dir)
     for f in files_list:
-        os.rename(os.path.join(args.dir, f), os.path.join(args.dir, "0_"+f))
-
-
-
+        os.rename(os.path.join(args.dir, f), os.path.join(args.dir, "1_"+f))
 
 def main():
     parser = argparse.ArgumentParser(
