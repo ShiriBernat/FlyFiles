@@ -44,7 +44,7 @@ def sample(args):
             predictions = graph.get_operation_by_name("output/predictions").outputs[0]
 
             predicted_result = sess.run(predictions, {input_x: raw_x, dropout_keep_prob: 1.0})
-            if (predicted_result[0] == 0):
+            if (predicted_result[0] == 1):
                 print(args.text + ": other")
             else:
                 print(args.text + ": computer science")
